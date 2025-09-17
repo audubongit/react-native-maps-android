@@ -1,4 +1,4 @@
-package com.rnmaps.maps;
+package com.rnmaps.mapsandroid;
 
 import android.os.Handler;
 import android.os.Looper;
@@ -18,7 +18,7 @@ public class ViewChangesTracker {
     handler = new Handler(Looper.myLooper());
     updateRunnable = new Runnable() {
       @Override
-      public void run() {        
+      public void run() {
         update();
 
         if (markers.size() > 0) {

@@ -24,10 +24,10 @@ def isNewArchitectureEnabled() {
 }
 
 android {
-  namespace "com.rnmaps.maps"
+  namespace "com.rnmaps.mapsandroid"
   def agpVersion = com.android.Version.ANDROID_GRADLE_PLUGIN_VERSION
   if (agpVersion.tokenize('.')[0].toInteger() >= 7) {
-    namespace "com.rnmaps.maps"
+    namespace "com.rnmaps.mapsandroid"
   }
 
   compileSdk safeExtGet('compileSdkVersion', 34)

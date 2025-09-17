@@ -1,4 +1,4 @@
-package com.rnmaps.maps;
+package com.rnmaps.mapsandroid;
 
 import android.content.Context;
 
@@ -17,7 +17,7 @@ import java.io.IOException;
 
 import java.net.MalformedURLException;
 import java.net.URL;
- 
+
 public class MapTileWorker extends Worker {
 	private static final int BUFFER_SIZE = 16 * 1024;
 

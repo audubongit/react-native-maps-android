@@ -1,4 +1,4 @@
-package com.rnmaps.maps;
+package com.rnmaps.mapsandroid;
 
 import android.content.Context;
 import android.net.Uri;

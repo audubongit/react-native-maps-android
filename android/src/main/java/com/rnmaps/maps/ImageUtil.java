@@ -1,4 +1,4 @@
-package com.rnmaps.maps;
+package com.rnmaps.mapsandroid;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

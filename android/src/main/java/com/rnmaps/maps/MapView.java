@@ -1,4 +1,4 @@
-package com.rnmaps.maps;
+package com.rnmaps.mapsandroid;
 
 import static androidx.core.content.PermissionChecker.checkSelfPermission;
 
@@ -477,7 +477,7 @@ public class MapView extends com.google.android.gms.maps.MapView implements Goog
     if (selectedMarker == target) {
       return;
     }
-    
+
     WritableMap event;
 
     if (selectedMarker != null) {
@@ -1157,7 +1157,7 @@ public static CameraPosition cameraPositionFromMap(ReadableMap camera){
   public boolean dispatchTouchEvent(MotionEvent ev) {
     gestureDetector.onTouchEvent(ev);
 
-    int X = (int)ev.getX();          
+    int X = (int)ev.getX();
     int Y = (int)ev.getY();
     if(map != null) {
       tapLocation = map.getProjection().fromScreenLocation(new Point(X,Y));

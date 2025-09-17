@@ -1,4 +1,4 @@
-package com.rnmaps.maps;
+package com.rnmaps.mapsandroid;
 
 import android.content.Context;
 
@@ -67,8 +67,8 @@ public class MapWMSTile extends MapUrlTile {
     }
   }
 
-  public AIRMapGSUrlTileProvider(int tileSizet, String urlTemplate, 
-    int maximumZ, int maximumNativeZ, int minimumZ, String tileCachePath, 
+  public AIRMapGSUrlTileProvider(int tileSizet, String urlTemplate,
+    int maximumZ, int maximumNativeZ, int minimumZ, String tileCachePath,
     int tileCacheMaxAge, boolean offlineMode, Context context, boolean customMode) {
       super(tileSizet, false, urlTemplate, maximumZ, maximumNativeZ, minimumZ, false,
         tileCachePath, tileCacheMaxAge, offlineMode, context, customMode);

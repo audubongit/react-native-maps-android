@@ -1,4 +1,4 @@
-package com.rnmaps.maps;
+package com.rnmaps.mapsandroid;
 
 import android.content.Context;
 import android.util.Log;
@@ -47,7 +47,7 @@ public class MapHeatmap extends MapFeature {
             heatmap.clearTileCache();
         }
     }
-    
+
     public void setOpacity(double opacity) {
         this.opacity = opacity;
         if (heatmapTileProvider != null) {

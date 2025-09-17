@@ -1,4 +1,4 @@
-package com.rnmaps.maps;
+package com.rnmaps.mapsandroid;
 
 import android.util.Log;
 
@@ -117,7 +117,7 @@ public class MapUrlTile extends MapFeature {
 
   public void setTileCachePath(String tileCachePath) {
     if (tileCachePath == null || tileCachePath.isEmpty()) return;
-    
+
     try {
       URL url = new URL(tileCachePath);
       this.tileCachePath = url.getPath();
@@ -176,7 +176,7 @@ public class MapUrlTile extends MapFeature {
     if (tileProvider != null) {
       tileProvider.setCustomMode();
     }
-  } 
+  }
 
   protected TileOverlayOptions createTileOverlayOptions() {
     Log.d("urlTile ", "creating TileProvider");
@@ -184,7 +184,7 @@ public class MapUrlTile extends MapFeature {
     options.zIndex(zIndex);
     options.transparency(1 - this.opacity);
     this.tileProvider = new MapTileProvider((int)this.tileSize, this.doubleTileSize, this.urlTemplate,
-      (int)this.maximumZ, (int)this.maximumNativeZ, (int)this.minimumZ, this.flipY, this.tileCachePath, 
+      (int)this.maximumZ, (int)this.maximumNativeZ, (int)this.minimumZ, this.flipY, this.tileCachePath,
       (int)this.tileCacheMaxAge, this.offlineMode, this.context, this.customTileProviderNeeded);
     options.tileProvider(this.tileProvider);
     return options;

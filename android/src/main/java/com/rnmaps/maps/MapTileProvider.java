@@ -1,4 +1,4 @@
-package com.rnmaps.maps;
+package com.rnmaps.mapsandroid;
 
 import android.content.Context;
 
@@ -126,11 +126,11 @@ public class MapTileProvider implements TileProvider {
 
 		byte[] image = null;
 		int maximumZ = this.maximumZ > 0 ? this.maximumZ : Integer.MAX_VALUE;
-		
+
 		if (this.tileSize == 256 && this.doubleTileSize && zoom + 1 <= this.maximumNativeZ && zoom + 1 <= maximumZ) {
       Log.d("urlTile", "pullTilesFromHigherZoom");
-			image = pullTilesFromHigherZoom(x, y, zoom);      
-		} 
+			image = pullTilesFromHigherZoom(x, y, zoom);
+		}
 
     if (zoom > this.maximumNativeZ) {
       Log.d("urlTile", "scaleLowerZoomTile");
@@ -144,7 +144,7 @@ public class MapTileProvider implements TileProvider {
 
     if (image == null && this.tileCachePath != null && this.offlineMode) {
       Log.d("urlTile", "findLowerZoomTileForScaling");
-      int zoomLevelToStart = (zoom > this.maximumNativeZ) ? this.maximumNativeZ - 1 : zoom - 1; 
+      int zoomLevelToStart = (zoom > this.maximumNativeZ) ? this.maximumNativeZ - 1 : zoom - 1;
       int minimumZoomToSearch = Math.max(this.minimumZ, zoom - 3);
       for (int tryZoom = zoomLevelToStart; tryZoom >= minimumZoomToSearch; tryZoom--) {
   			image = scaleLowerZoomTile(x, y, zoom, tryZoom);
@@ -247,19 +247,19 @@ public class MapTileProvider implements TileProvider {
     bitmap = BitmapFactory.decodeByteArray(leftTop, 0, leftTop.length);
     canvas.drawBitmap(bitmap, 0, 0, paint);
     bitmap.recycle();
-    
+
     bitmap = BitmapFactory.decodeByteArray(leftBottom, 0, leftBottom.length);
     canvas.drawBitmap(bitmap, 0, 256, paint);
     bitmap.recycle();
-    
+
     bitmap = BitmapFactory.decodeByteArray(rightTop, 0, rightTop.length);
     canvas.drawBitmap(bitmap, 256, 0, paint);
     bitmap.recycle();
-  
+
     bitmap = BitmapFactory.decodeByteArray(rightBottom, 0, rightBottom.length);
     canvas.drawBitmap(bitmap, 256, 256, paint);
     bitmap.recycle();
-    
+
     data = bitmapToByteArray(image);
     image.recycle();
     return data;
@@ -287,11 +287,11 @@ public class MapTileProvider implements TileProvider {
 	byte[] scaleLowerZoomTile(int x, int y, int zoom, int maximumZoom) {
     int overZoomLevel = zoom - maximumZoom;
     int zoomFactor = 1 << overZoomLevel;
-    
+
     int xParent = x >> overZoomLevel;
     int yParent = y >> overZoomLevel;
     int zoomParent = zoom - overZoomLevel;
-    
+
     int xOffset = x % zoomFactor;
     int yOffset = y % zoomFactor;
 
@@ -302,7 +302,7 @@ public class MapTileProvider implements TileProvider {
 
 		data = getTileImage(xParent, yParent, zoomParent);
     if (data == null) return null;
-    
+
     Bitmap sourceImage;
     sourceImage = BitmapFactory.decodeByteArray(data, 0, data.length);
 
@@ -315,7 +315,7 @@ public class MapTileProvider implements TileProvider {
     data = bitmapToByteArray(image);
     image.recycle();
     return data;
-	} 
+	}
 
 	void checkForRefresh(int x, int y, int zoom) {
 		String fileName =  getTileFilename(x, y, zoom);
@@ -371,7 +371,7 @@ public class MapTileProvider implements TileProvider {
 			if (buffer != null) try { buffer.close(); } catch (Exception ignored) {}
 		}
 	}
-	
+
 	byte[] readTileImage(int x, int y, int zoom) {
 		InputStream in = null;
 		ByteArrayOutputStream buffer = null;
@@ -437,16 +437,16 @@ public class MapTileProvider implements TileProvider {
 		return this.tileCachePath + '/' + zoom +
 			"/" + x + "/" + y;
 	}
-	
+
 	protected URL getTileUrl(int x, int y, int zoom) {
 		return this.tileProvider.getTileUrl(x, y, zoom);
 	}
-	
+
 	public void setUrlTemplate(String urlTemplate) {
 		if (this.urlTemplate != urlTemplate) {
 			this.tileProvider = new AIRMapUrlTileProvider(tileSize, tileSize, urlTemplate);
 		}
-		
+
 		this.urlTemplate = urlTemplate;
 	}
 
